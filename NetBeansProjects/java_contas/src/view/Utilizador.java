@@ -115,7 +115,7 @@ public class Utilizador extends javax.swing.JFrame {
         user.setAcesso("Utilizador Normal");
         
         String response = usercontroller.strore(user);
-        if(response =="yes"){
+        if("yes".equals(response)){
             JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso");
             this.dispose();
             Login login = new Login();

@@ -7,7 +7,9 @@ package view;
 
 import controller.UserController;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import model.User;
 
 /**
@@ -16,6 +18,8 @@ import model.User;
  */
 public class Home extends javax.swing.JFrame {
 
+    TableRowSorter<DefaultTableModel> sorter; 
+    
     public Home() {
         initComponents();
     }
@@ -43,6 +47,7 @@ public class Home extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
         txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -112,14 +117,16 @@ public class Home extends javax.swing.JFrame {
 
         jLabel4.setText("Estado:");
 
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSearchKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,6 +140,14 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(txtEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +164,9 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -241,6 +258,10 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
+       this.search();
+    }//GEN-LAST:event_txtSearchKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -294,6 +315,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextField txtAcesso;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtUtilizador;
     // End of variables declaration//GEN-END:variables
 
@@ -309,6 +331,9 @@ public class Home extends javax.swing.JFrame {
                 user.getEstado()
             });
         }
+        jTUtilizadores.setAutoCreateRowSorter(true);
+        sorter = new TableRowSorter<>(modelo);
+        jTUtilizadores.setRowSorter(sorter);
     }
 
     private void setPermissoes() {
@@ -329,6 +354,14 @@ public class Home extends javax.swing.JFrame {
        txtAcesso.setText(null);
        txtId.setText(null);
        txtEstado.setText(null);
+    }
+
+    private void search() {
+       try{
+          sorter.setRowFilter(RowFilter.regexFilter(txtSearch.getText()));
+       }catch(Exception ex){
+           
+       }
     }
 
 }

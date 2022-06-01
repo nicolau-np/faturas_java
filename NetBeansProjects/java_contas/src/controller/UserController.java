@@ -98,9 +98,15 @@ public class UserController extends Controller {
     }
     
     public String update(User user){
-        this.sql = "update utilizador set utilizador=?, acesso=?, "
+        this.sql = "update utilizador set utilizador=?, acesso=?, estado=? where id=?";
         try{
-            
+            this.cmd = conn.getConexaoMySQL().prepareStatement(this.sql);
+            this.cmd.setString(1, user.getUtilizador());
+            this.cmd.setString(2, user.getAcesso());
+            this.cmd.setString(3, user.getEstado());
+            this.cmd.setInt(4, user.getId());
+            this.cmd.executeUpdate();
+            this.response = "yes";
         }catch(SQLException ex){
             this.response = ex.getMessage();
         }finally{

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="14ff7108-e3e1-4b52-aae9-ca53334d4459">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="23"/>
+	<field name="utilizador" class="java.lang.String"/>
+	<field name="palavra_passe" class="java.lang.String"/>
+	<field name="acesso" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="173" y="25" width="204" height="38" uuid="9ee1f805-b6ed-4b96-9aa6-65bb0ca6f1bd"/>
+				<textElement>
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[Utiliazdores]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="62" y="41" width="111" height="20" uuid="e6013bc3-7bde-4915-a278-a9aedcf92461"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[utilizador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="41" width="111" height="20" uuid="48e621f1-b4f5-43fd-aed8-ad9d5a2744c1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[acesso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="41" width="111" height="20" uuid="ca1ec180-67e5-4873-8440-8ef955f63274"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="173" y="41" width="111" height="20" uuid="064db546-138c-4a17-a573-87e286b88b59"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[palavra_passe]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="62" y="0" width="111" height="20" uuid="074f0552-2ae8-4fc5-a1ca-9975c0584cd5"/>
+				<textFieldExpression><![CDATA[$F{utilizador}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="0" width="111" height="20" uuid="06fed14f-b169-4474-95fc-e628df9b7bc9"/>
+				<textFieldExpression><![CDATA[$F{palavra_passe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="284" y="0" width="111" height="20" uuid="36a037b9-9255-485a-b05e-d97ec7ee5720"/>
+				<textFieldExpression><![CDATA[$F{acesso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="0" width="111" height="20" uuid="c2877b31-6117-4dcf-89b8-16f0111abc76"/>
+				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
